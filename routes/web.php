@@ -12,12 +12,15 @@
 */
 
 Route::get('/', function () {
+    // return 'Hello satria';
     return view('welcome');
 });
 
 Route::get('/projects', 'ProjectsController@index');
 
-Route::post('/projects', 'ProjectsController@store');
+Route::get('/projects/{project}', 'ProjectsController@show');
+
+Route::post('/projects', 'ProjectsController@store')->middleware('auth');
 
 // Route::get('/projects', function () {
 //     $projects = App\Project::all();
@@ -35,3 +38,7 @@ Route::post('/projects', 'ProjectsController@store');
 //     // redirect
 
 // });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

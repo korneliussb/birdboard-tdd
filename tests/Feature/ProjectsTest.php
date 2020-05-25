@@ -24,9 +24,20 @@ class ProjectsTest extends TestCase
     use WithFaker, RefreshDatabase;
 
     /** @test */
+    public function only_authenticated_users_can_create_project()
+    {
+        // $this->withoutExceptionHandling();
+
+        $attributes = factory('App\Project')->raw(); // store as an array, not an object => raw()
+        $this->post('/projects', $attributes)->assertRedirect('login');
+    }
+
+    /** @test */
     public function a_user_can_create_a_project()
     {
         $this->withoutExceptionHandling();
+
+        $this->actingAs(factory('App\User')->create());
 
         $attributes = [
             'title' => $this->faker->sentence,
@@ -42,14 +53,38 @@ class ProjectsTest extends TestCase
     }
 
     /** @test */
+    public function a_user_can_view_a_project()
+    {
+        $this->withoutExceptionHandling();
+
+        $project = factory('App\Project')->create();
+
+        $this->get($project->path())
+            ->assertSee($project->title)
+            ->assertSee($project->description);
+
+        // $this->get('/projects/' . $project->slug) //id
+        //     ->assertSee($project->title)
+        //     ->assertSee($project->description);
+    }
+
+    /** @test */
     public function a_project_requires_a_title()
     {
-        $this->post('/projects', [])->assertSessionHasErrors('title');
+        $this->actingAs(factory('App\User')->create());
+
+        $attributes = factory('App\Project')->raw(['title' => '']); // store as an array, not an object => raw()
+
+        $this->post('/projects', $attributes)->assertSessionHasErrors('title');
     }
 
     /** @test */
     public function a_project_requires_a_description()
     {
-        $this->post('/projects', [])->assertSessionHasErrors('description');
+        $this->actingAs(factory('App\User')->create());
+
+        $attributes = factory('App\Project')->raw(['description' => '']); // store as an array, not an object => raw()
+
+        $this->post('/projects', $attributes)->assertSessionHasErrors('description');
     }
 }
