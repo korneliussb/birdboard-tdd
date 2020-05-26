@@ -8,19 +8,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ProjectsTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-
-    // public function testExample()
-    // {
-    //     $response = $this->get('/');
-
-    //     $response->assertStatus(200);
-    // }
-
     use WithFaker, RefreshDatabase;
 
     /** @test */
