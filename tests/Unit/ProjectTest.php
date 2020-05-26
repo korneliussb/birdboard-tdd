@@ -11,7 +11,7 @@ class ProjectTest extends TestCase
 
     use RefreshDatabase;
 
-    /** @test*/
+    /** @test */
     public function it_has_a_path()
     {
         $project = factory('App\Project')->create();

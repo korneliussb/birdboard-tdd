@@ -16,11 +16,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/projects', 'ProjectsController@index');
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/projects/{project}', 'ProjectsController@show');
+    Route::get('/projects', 'ProjectsController@index');
 
-Route::post('/projects', 'ProjectsController@store')->middleware('auth');
+    Route::get('/projects/{project}', 'ProjectsController@show');
+
+    Route::post('/projects', 'ProjectsController@store');
+
+    Route::get('/home', 'HomeController@index')->name('home');
+});
+
 
 // Route::get('/projects', function () {
 //     $projects = App\Project::all();
@@ -40,5 +46,3 @@ Route::post('/projects', 'ProjectsController@store')->middleware('auth');
 // });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
