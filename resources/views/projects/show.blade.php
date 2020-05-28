@@ -45,11 +45,17 @@
             <div>
                 <h2 class="text-lg text-grey font-normal">General Notes</h2>
                 <!-- General Notes -->
-                <textarea class="card w-full" style="min-height: 200px">Lorem ipsum.</textarea>
+                <form method="POST" action="{{ $project->path() }}">
+                    @csrf
+                    @method('PATCH')
+                    <textarea name="notes" class="card w-full mb-4" style="min-height: 200px" placeholder="Anything special that you want to make a note of?">{{ $project->notes }}</textarea>
+
+                    <button type="submit" class="button">Save</button>
+                </form>
             </div>
         </div>
 
-        <div class="lg:w-1/4 px-3">
+        <div class="lg:w-1/4 px-3 lg:py-8">
             @include('projects.card')
             <!-- <div class="card">
                 <h1>{{$project->title}}</h1>

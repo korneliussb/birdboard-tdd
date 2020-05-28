@@ -22,6 +22,13 @@ class ProjectsController extends Controller
         return view('projects.index', compact('projects'));
     }
 
+    /**
+     * Show a single project.
+     *
+     * @param \App\Project $project
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function show(Project $project)
     {
         // $project = Project::findOrFail(request('project'));
@@ -30,18 +37,30 @@ class ProjectsController extends Controller
         //     abort(403);
         // }
 
-        if (auth()->user()->isNot($project->owner)) {
-            abort(403);
-        }
+        // if (auth()->user()->isNot($project->owner)) {
+        //     abort(403);
+        // }
+
+        $this->authorize('update', $project);
 
         return view('projects.show', compact('project'));
     }
 
+    /**
+     * Create a new project.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('projects.create');
     }
 
+    /**
+     * Persist a new project.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store()
     {
         // dd('here we are');
@@ -50,7 +69,10 @@ class ProjectsController extends Controller
         $attributes = request()->validate([
             'title' => 'required',
             'description' => 'required',
+            'notes' => 'min:3'
         ]);
+
+        // dd($attributes);
 
         // $attributes['owner_id'] = auth()->id();
 
@@ -63,6 +85,15 @@ class ProjectsController extends Controller
         // Project::create($attributes);
 
         // redirect
+        return redirect($project->path());
+    }
+
+    public function update(Project $project)
+    {
+        $this->authorize('update', $project);
+
+        $project->update(request(['notes']));
+
         return redirect($project->path());
     }
 }
