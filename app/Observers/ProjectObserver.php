@@ -10,7 +10,7 @@ class ProjectObserver
     /**
      * Handle the project "created" event.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Project $project
      * @return void
      */
     public function created(Project $project)
@@ -21,7 +21,7 @@ class ProjectObserver
     /**
      * Handle the project "updated" event.
      *
-     * @param  \App\Project  $project
+     * @param  \App\Project $project
      * @return void
      */
     public function updated(Project $project)
@@ -29,6 +29,12 @@ class ProjectObserver
         $this->recordActivity('updated', $project);
     }
 
+    /**
+     * Record activity for a project.
+     * 
+     * @param string $type
+     * @param \App\Project $project
+     */
     protected function recordActivity($type, $project)
     {
         Activity::create([

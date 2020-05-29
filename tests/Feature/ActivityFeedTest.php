@@ -3,16 +3,15 @@
 namespace Tests\Feature;
 
 use Facades\Tests\Setup\ProjectFactory;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class ActivityFeedTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function creating_a_project_generates_activity()
+    function creating_a_project_generates_activity()
     {
         $project = ProjectFactory::create();
 
@@ -21,14 +20,13 @@ class ActivityFeedTest extends TestCase
     }
 
     /** @test */
-    public function updating_a_project_generates_activity()
+    function updating_a_project_generates_activity()
     {
         $project = ProjectFactory::create();
 
         $project->update(['title' => 'Changed']);
 
         $this->assertCount(2, $project->activity);
-
         $this->assertEquals('updated', $project->activity->last()->description);
     }
 }
