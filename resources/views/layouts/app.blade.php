@@ -21,28 +21,18 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-grey-light">
+<body class="bg-grey-lighter">
     <div id="app">
-        <nav class="bg-white">
+        <nav class="bg-white section">
             <div class="container mx-auto">
-
-                <div class="flex justify-between items-center py-2">
+                <div class="flex justify-between items-center py-1">
                     <h1>
                         <a class="navbar-brand" href="{{ url('/projects') }}">
-                            <img src="/images/logo.svg" alt="Birdboard">
-                            <!-- {{ config('app.name', 'Laravel') }} -->
+                            <img src="/images/logo.svg" alt="Birdboard" class="relative" style="top: 2px">
                         </a>
                     </h1>
-                    <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button> -->
 
                     <div>
-                        <!-- Left Side Of Navbar -->
-                        <!-- <ul class="navbar-nav mr-auto">
-
-                    </ul> -->
-
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
@@ -63,7 +53,7 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                                         document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
@@ -79,7 +69,7 @@
             </div>
         </nav>
 
-        <main class="container mx-auto py-4">
+        <main class="container mx-auto py-6 section">
             @yield('content')
         </main>
     </div>
