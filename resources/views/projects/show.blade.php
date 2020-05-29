@@ -45,7 +45,7 @@
             <div>
                 <h2 class="text-lg text-grey font-normal mb-3">General Notes</h2>
 
-                <!--  general notes -->
+                {{-- general notes --}}
                 <form method="POST" action="{{ $project->path() }}">
                     @csrf
                     @method('PATCH')
@@ -55,14 +55,7 @@
                     <button type="submit" class="button">Save</button>
                 </form>
 
-                @if ($errors->any())
-                <div class="field mt-6">
-                    @foreach ($errors->all() as $error)
-                    <li class="text-sm text-red">{{ $error }}</li>
-                    @endforeach
-                </div>
-                @endif
-
+                @include ('errors')
             </div>
         </div>
 
