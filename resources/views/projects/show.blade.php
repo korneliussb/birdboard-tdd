@@ -18,7 +18,7 @@
             <div class="mb-8">
                 <h2 class="text-lg text-grey font-normal mb-3">Tasks</h2>
 
-                <!-- Tasks -->
+                {{-- tasks --}}
                 @foreach ($project->tasks as $task)
                 <div class="card mb-3">
                     <form method="POST" action="{{ $task->path() }}">
@@ -45,7 +45,7 @@
             <div>
                 <h2 class="text-lg text-grey font-normal mb-3">General Notes</h2>
 
-                <!-- general notes -->
+                {{-- general notes --}}
                 <form method="POST" action="{{ $project->path() }}">
                     @csrf
                     @method('PATCH')
