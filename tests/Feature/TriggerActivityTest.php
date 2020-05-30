@@ -11,7 +11,7 @@ class TriggerActivityTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    function creating_a_project_records_activity()
+    function creating_a_project()
     {
         $project = ProjectFactory::create();
 
@@ -20,7 +20,7 @@ class TriggerActivityTest extends TestCase
     }
 
     /** @test */
-    function updating_a_project_records_activity()
+    function updating_a_project()
     {
         $project = ProjectFactory::create();
 
@@ -82,7 +82,7 @@ class TriggerActivityTest extends TestCase
     }
 
     /** @test */
-    public function deleting_a_task()
+    function deleting_a_task()
     {
         $project = ProjectFactory::withTasks(1)->create();
 
