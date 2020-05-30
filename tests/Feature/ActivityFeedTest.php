@@ -31,7 +31,7 @@ class ActivityFeedTest extends TestCase
     }
 
     /** @test */
-    public function creating_a_new_task_records_project_activity()
+    function creating_a_new_task_records_project_activity()
     {
         $project = ProjectFactory::create();
 
@@ -42,7 +42,7 @@ class ActivityFeedTest extends TestCase
     }
 
     /** @test */
-    public function completing_a_new_task_records_project_activity()
+    function completing_a_new_task_records_project_activity()
     {
         $project = ProjectFactory::withTasks(1)->create();
 

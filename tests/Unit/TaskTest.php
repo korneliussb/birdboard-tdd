@@ -4,16 +4,15 @@ namespace Tests\Unit;
 
 use App\Project;
 use App\Task;
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class TaskTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function it_belongs_to_a_project()
+    function it_belongs_to_a_project()
     {
         $task = factory(Task::class)->create();
 
@@ -21,7 +20,7 @@ class TaskTest extends TestCase
     }
 
     /** @test */
-    public function it_has_a_path()
+    function it_has_a_path()
     {
         $task = factory(Task::class)->create();
 
@@ -29,13 +28,14 @@ class TaskTest extends TestCase
     }
 
     /** @test */
-    public function it_can_be_completed()
+    function it_can_be_completed()
     {
         $task = factory(Task::class)->create();
 
         $this->assertFalse($task->completed);
 
         $task->complete();
+
         $this->assertTrue($task->fresh()->completed);
     }
 }
