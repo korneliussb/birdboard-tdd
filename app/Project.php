@@ -57,7 +57,7 @@ class Project extends Model
     /**
      * Record activity for a project.
      *
-     * @param string $type
+     * @param string $description
      */
     public function recordActivity($description)
     {
