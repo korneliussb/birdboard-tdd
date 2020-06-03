@@ -1,13 +1,6 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import './bootstrap';
 
-require('./bootstrap');
-
-window.Vue = require('vue');
-
+import Vue from 'vue';
 import VModal from 'vue-js-modal'
 
 Vue.use(VModal)
@@ -33,6 +26,6 @@ Vue.component('dropdown', require('./components/Dropdown.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+new Vue({
     el: '#app'
 });
