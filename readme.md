@@ -80,3 +80,4 @@ The Laravel framework is open-source software licensed under the [MIT license](h
 7. npm install laravel-mix-tailwind -D
 8. npm install vue-js-modal --save
 9. npm run watch, when php artisan serve in Command Prompt
+10. php artisan migrate
