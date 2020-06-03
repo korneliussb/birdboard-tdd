@@ -69,3 +69,14 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Notes @kornelius.satria
+1. First, install Composer
+2. git clone
+3. npm install, if error -> npm cache clean --force
+4. npm run dev
+5. npm install tailwindcss@0.7.4 --save dev
+6. npx tailwind init
+7. npm install laravel-mix-tailwind -D
+8. npm install vue-js-modal --save
+9. npm run watch, when php artisan serve in Command Prompt
